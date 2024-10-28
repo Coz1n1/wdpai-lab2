@@ -152,7 +152,16 @@ class SimpleRequestHandler(BaseHTTPRequestHandler):
 
         user_id = received_data.get('id')
 
-        SimpleRequestHandler.user_list = [user for user in self.user_list if user['id'] != user_id]
+        try:
+            cursor.execute("DELETE FROM users WHERE id=%s", (user_id,))
+            conn.commit()
+            print("Delete user")
+            self.user_list = self.get_users()
+        except Exception as e:
+            print("Error:", e)
+            self.send_response(500)
+            self.end_headers()
+            return            
 
         response: dict = {
             "message": "Item deleted",
