@@ -108,28 +108,40 @@ class SimpleRequestHandler(BaseHTTPRequestHandler):
         # Decode the received byte data and parse it as JSON.
         # We expect the POST request body to contain JSON-formatted data.
         received_data: dict = json.loads(post_data.decode())
-        SimpleRequestHandler.pomId += 1
+
         new_user = received_data
-        new_user['id'] = SimpleRequestHandler.pomId
-        self.user_list.append(received_data)
+        first_name = new_user.get("first_name")
+        last_name = new_user.get("last_name")
+        role = new_user.get("role")
+
+        try:
+            cursor.execute("INSERT INTO users (first_name,last_name,role) VALUES (%s,%s,%s)",
+                (first_name,last_name,role)
+            )
+            conn.commit()
+            print("User added")
+
+            self.user_list = self.get_users()
+
+        except Exception as e:
+            print("Error:", e)
+            self.send_response(500)
+            self.end_headers()
+            return
         # Prepare the response data.
         # It includes a message indicating it's a POST request and the data we received from the client.
         response: dict = {
             "message": "Item added",
             "user_list": self.user_list 
         }
-
         # Send the response headers.
         # Set the status to 200 OK and indicate the response content will be in JSON format.
         self.send_response(200)
         self.send_header('Content-type', 'application/json')
-
         # Again, allow any origin to access this resource (CORS header).
         self.send_header('Access-Control-Allow-Origin', '*')
-
         # Finish sending headers.
         self.end_headers()
-
         # Convert the response dictionary to a JSON string and send it back to the client.
         self.wfile.write(json.dumps(response).encode())
 
