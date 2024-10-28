@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Form</title>
+    <script type="module" src="./logic.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="wrapper">
+        <form class="main-form" id="userForm">
+          <h1 class="main-form-header">Let's level up your brand, together</h1>
+          <div class="inputs-wrapper">
+            <div class="input-wrapper">
+              <label for="firstName" class="form-label">First name</label>
+              <input
+                type="text"
+                name="firstName"
+                id="firstName"
+                placeholder="First name"
+                class="form-input"
+                required
+              />
+            </div>
+            <div class="input-wrapper">
+              <label for="lastName" class="form-label">Last name</label>
+              <input
+                type="text"
+                name="lastName"
+                id="lastName"
+                placeholder="Last name"
+                class="form-input"
+                required
+              />
+            </div>
+            <div class="input-wrapper">
+              <label for="role" class="form-label">Role</label>
+              <input
+                type="text"
+                name="role"
+                id="role"
+                placeholder="Role"
+                class="form-input"
+                required
+              />
+            </div>
+          </div>
+          <div class="agreement-wrapper">
+            <input type="checkbox" required />
+            <p class="agreement-text">
+              You agree to our friendly
+              <span class="agreement-text-underlined">privacy policy</span>
+            </p>
+          </div>
+          <button type="submit" class="submit-button">Submit</button>
+        </form>
+        <div class="users-wrapper"></div>
+      </div>
+    </div>
+  </body>
+</html>

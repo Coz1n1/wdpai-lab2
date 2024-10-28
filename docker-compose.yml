@@ -1,0 +1,45 @@
+version: "3"
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "8080:80" # Expose port 8080 for the web server
+    depends_on:
+      - python_server
+    networks:
+      - webnet
+
+  python_server:
+    build: ./python_server
+    ports:
+      - "8000:8000" # Expose port 8000 for the Python server
+    networks:
+      - webnet
+
+  postgres:
+    image: postgres:13
+    restart: always
+    environment:
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=dbpassword
+      - POSTGRES_DB=mydb
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+      - ./postgres_init:/docker-entrypoint-initdb.d/
+    networks:
+      - webnet
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=kacpertokajj@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=adminpassword
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - webnet
+
+networks:
+  webnet:

@@ -1,0 +1,149 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.main-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  background-color: rgb(250, 250, 250);
+}
+
+.wrapper {
+  display: flex;
+  width: 400px;
+  max-width: 95%;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.main-form {
+  width: 100%;
+  border: 1px solid rgba(208, 213, 221, 1);
+  border-radius: 7px;
+  padding: 30px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: white;
+}
+
+.main-form-header {
+  color: rgb(16, 24, 40);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.form-input {
+  padding: 10px 15px;
+  border: 1px solid rgba(208, 213, 221, 1);
+  border-radius: 10px;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  color: rgb(102, 112, 133);
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.form-label {
+  color: rgb(52, 64, 84);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.inputs-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.agreement-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.agreement-text {
+  color: rgb(102, 112, 133);
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.agreement-text-underlined {
+  text-decoration: underline;
+}
+
+.submit-button {
+  border: none;
+  padding: 15px 0px;
+  border-radius: 15px;
+  background-color: rgb(16 185 129);
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.users-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.user-wrapper {
+  width: 100%;
+  border: 1px solid rgba(208, 213, 221, 1);
+  border-radius: 7px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-wrapper-infos {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  justify-content: start;
+}
+
+.user-wrapper-infos-name {
+  color: rgb(25, 29, 35);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.user-wrapper-infos-role {
+  color: rgb(100, 116, 139);
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.delete-button {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  color: rgb(102, 112, 133);
+}
